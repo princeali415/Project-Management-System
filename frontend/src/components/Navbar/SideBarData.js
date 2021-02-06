@@ -8,7 +8,7 @@ import * as BiIcons from 'react-icons/bi'
 export const SidebarData = [
     {
         title: 'Dashboard',
-        path: '/',
+        path: '/dashboard',
         icon: <AiIcons.AiOutlineBarChart />,
         cName: 'nav-text',
         id: 'dashboard-id'
@@ -36,7 +36,7 @@ export const SidebarData = [
     },
     {
         title: 'Logout',
-        path: '/logout',
+        path: '/',
         icon: <BiIcons.BiLogOut />,
         cName: 'nav-text',
         id: 'logout-id'

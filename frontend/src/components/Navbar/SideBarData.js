@@ -11,23 +11,34 @@ export const SidebarData = [
         path: '/',
         icon: <AiIcons.AiOutlineBarChart />,
         cName: 'nav-text',
+        id: 'dashboard-id'
     },
     {
         title: 'Team Members',
         path: '/team-members',
         icon: <IoIcons.IoMdPeople/>,
         cName: 'nav-text',
+        id: 'team-members-id'
     },
     {
         title: 'Tickets',
         path: '/tickets',
         icon: <FaIcons.FaList />,
         cName: 'nav-text',
+        id: 'tickets-id'
     },
     {
         title: 'Projects',
         path: '/projects',
         icon: <ImIcons.ImFileText2 />,
         cName: 'nav-text',
+        id: 'projects-id'
+    },
+    {
+        title: 'Logout',
+        path: '/logout',
+        icon: <BiIcons.BiLogOut />,
+        cName: 'nav-text',
+        id: 'logout-id'
     },
 ]

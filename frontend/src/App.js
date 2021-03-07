@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -6,18 +7,32 @@ import TeamMembers from './pages/TeamMembers';
 import Tickets from './pages/Tickets';
 import Projects from './pages/Projects';
 import Login from './pages/Login';
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
+
+  const [loggedIn , setLoggedIn] = useState(false)
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setLoggedIn(false)
+    window.location.reload()
+  }
+
   return (
     <>
       <Router>
-        <Route exact path='/' component={Login}/>
+        <Route exact path='/' render={(props) => {
+          return <Login {...props} setLoggedIn={setLoggedIn} />
+        }}/>
         <Switch>
-          <Navbar />
-            <Route path='/dashboard' component={Dashboard}/>
-            <Route path='/team-members' component={TeamMembers} />
-            <Route path='/tickets' component={Tickets} />
-            <Route path='/projects' component={Projects} />
+          {loggedIn ? <Navbar logout={logout}/> : null}
+          <PrivateRoute path='/dashboard' component={Dashboard}/>
+          <PrivateRoute path='/team-members' component={TeamMembers} />
+          <PrivateRoute path='/tickets' component={Tickets} />
+          <PrivateRoute path='/projects' component={Projects} />
+          
         </Switch>
       </Router>
     </>

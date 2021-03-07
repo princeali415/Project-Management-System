@@ -9,7 +9,7 @@ import './Navbar.css'
 import { IconContext } from 'react-icons'
 
 
-function Navbar() {
+function Navbar(props) {
 
     const [sidebar, setSideBar] = useState(false)
 
@@ -35,10 +35,15 @@ function Navbar() {
             {SidebarData.map((item, index) => {
                 return (
                     <li key={index} className={item.cName} id={item.id}>
-                        <Link to={item.path}>
+                        {item.path === "/logout" ? 
+                        <Link to={item.path} onClick={props.logout}>
                             {item.icon}
                             <span>{item.title}</span>
                         </Link>
+                        : <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>}
                     </li>
                 )
             })}

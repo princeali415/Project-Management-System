@@ -49,7 +49,3 @@ table {
 
 /* -------------------Projects---------------------- */
 
-.project-card-ctn {
-	display: grid;
-    justify-content: center;
-}

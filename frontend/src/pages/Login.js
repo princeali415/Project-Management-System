@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import ErrorAlert from "../components/Alert/ErrorAlert";
 
 const initialFormValues = {
     username: "",
@@ -158,6 +159,7 @@ export default function Login({setLoggedIn}) {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
+    const [alert, setAlert] = useState(false)
 
     const history = useHistory();
 
@@ -212,7 +214,7 @@ export default function Login({setLoggedIn}) {
                 history.push("/dashboard")
             })
             .catch((err) => {
-                alert("Invalid Username or Password")
+                setAlert(true);
             })
     };
 
@@ -222,6 +224,8 @@ export default function Login({setLoggedIn}) {
     }
   
     return (
+    <>
+    { alert ? <ErrorAlert /> : <></>}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -273,5 +277,6 @@ export default function Login({setLoggedIn}) {
           </form>
         </div>
       </Container>
+    </>
     );
   }

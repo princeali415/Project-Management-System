@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Login from './pages/Login';
 import PrivateRoute from './utils/PrivateRoute';
 import NavbarMaterialUI from './components/Navbar/NavbarMaterialUI';
+import Logout from './pages/Logout';
 
 function App() {
 
@@ -16,12 +17,19 @@ function App() {
 
   const history = useHistory();
 
-  const logout = () => {
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      setLoggedIn(true)
+  }
+  }, [loggedIn])
+
+
+  const logout = (e) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    setLoggedIn(false)
     
-  }
+    setLoggedIn(false);
+  };
 
   return (
     <>
@@ -30,6 +38,7 @@ function App() {
         <Route exact path='/' render={(props) => {
           return <Login {...props} setLoggedIn={setLoggedIn} />
         }}/>
+        
         <Switch>
           {/* {loggedIn ? <Navbar logout={logout}/> : <></>} */}
           {loggedIn ? <NavbarMaterialUI logout={logout}/> : <></>}
@@ -37,8 +46,8 @@ function App() {
           <PrivateRoute path='/team-members' component={TeamMembers} />
           <PrivateRoute path='/tickets' component={Tickets} />
           <PrivateRoute path='/projects' component={Projects} />
-          
         </Switch>
+        <Route path='/logout' component={Logout} />
       </Router>
     </>
   );

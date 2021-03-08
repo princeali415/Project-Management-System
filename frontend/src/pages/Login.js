@@ -16,7 +16,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-export default function Login(props) {
+export default function Login({setLoggedIn}) {
 
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -69,8 +69,10 @@ export default function Login(props) {
             )
             .then((res) => {
                 console.log(res);
-                props.setLoggedIn(true);
                 localStorage.setItem('token', res.data.access_token);
+                if(localStorage.getItem('token')){
+                    setLoggedIn(true)
+                }
                 history.push("/dashboard")
             })
             .catch((err) => {

@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import PrivateRoute from './utils/PrivateRoute';
 import NavbarMaterialUI from './components/Navbar/NavbarMaterialUI';
 import Logout from './pages/Logout';
+import SignUp from './pages/SignUp';
 
 function App() {
 
@@ -38,9 +39,8 @@ function App() {
         <Route exact path='/' render={(props) => {
           return <Login {...props} setLoggedIn={setLoggedIn} />
         }}/>
-        
+        <Route path='/signup' component={SignUp} />
         <Switch>
-          {/* {loggedIn ? <Navbar logout={logout}/> : <></>} */}
           {loggedIn ? <NavbarMaterialUI logout={logout}/> : <></>}
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <PrivateRoute path='/team-members' component={TeamMembers} />

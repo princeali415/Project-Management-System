@@ -215,6 +215,7 @@ export default function Login({setLoggedIn}) {
             })
             .catch((err) => {
                 setAlert(true);
+                setFormValues(initialFormValues)
             })
     };
 
@@ -271,7 +272,7 @@ export default function Login({setLoggedIn}) {
             >
               Sign In
             </Button>
-            <Link href="#" variant="body2">
+            <Link href="/signup" variant="body2">
                 <p>Don't have an account? Sign Up</p>
             </Link>
           </form>

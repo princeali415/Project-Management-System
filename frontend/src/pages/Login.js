@@ -3,16 +3,14 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import schema from "../schema/loginValidation";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ErrorAlert from "../components/Alert/ErrorAlert";
+import logo from '../8SignInLogo.svg'
 
 const initialFormValues = {
     username: "",
@@ -27,6 +25,9 @@ const initialFormErrors = {
 const initialDisabled = true;
 
 const useStyles = makeStyles((theme) => ({
+    logo: {
+        marginBottom: '20px'
+    },
     paper: {
       marginTop: theme.spacing(8),
       display: 'flex',
@@ -230,12 +231,9 @@ export default function Login({setLoggedIn}) {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
+          
+            <img src={logo} alt="logo for website" className={classes.logo} />
+
           <form className={classes.form} onSubmit={handleLogin}>
             <TextField
               variant="outlined"
@@ -272,7 +270,7 @@ export default function Login({setLoggedIn}) {
             >
               Sign In
             </Button>
-            <Link href="/signup" variant="body2">
+            <Link onClick={() => history.push("/signup")} style={{color:'blue', cursor:'pointer'}}>
                 <p>Don't have an account? Sign Up</p>
             </Link>
           </form>

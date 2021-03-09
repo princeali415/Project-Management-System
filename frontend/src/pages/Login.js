@@ -212,7 +212,7 @@ export default function Login({setLoggedIn}) {
                 if(localStorage.getItem('token')){
                     setLoggedIn(true)
                 }
-                history.push("/dashboard")
+                history.push("/tickets")
             })
             .catch((err) => {
                 setAlert(true);

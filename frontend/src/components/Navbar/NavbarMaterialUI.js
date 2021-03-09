@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { SidebarData } from './SideBarData'
 import {Link} from 'react-router-dom'
+import './Navbar.css'
 
 
 const drawerWidth = 240;

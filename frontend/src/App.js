@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import TeamMembers from './pages/TeamMembers';
 import Tickets from './pages/Tickets';
@@ -15,8 +14,6 @@ import SignUp from './pages/SignUp';
 function App() {
 
   const [loggedIn , setLoggedIn] = useState(false)
-
-  const history = useHistory();
 
   useEffect(() => {
     if(localStorage.getItem('token')){

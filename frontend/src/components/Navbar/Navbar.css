@@ -85,9 +85,6 @@ box-shadow: inset 5px 4px 4px rgba(171, 171, 171, 0.25);
     align-items: center;
   }
   
-  span {
-    margin-left: 25px;
-  }
 
   #logout-id {
     border-top: solid #bfbfbf 0.2px;

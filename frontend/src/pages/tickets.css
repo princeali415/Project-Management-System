@@ -1,0 +1,10 @@
+#table {
+    margin-top: 65px;
+}
+
+#tickets{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-right: -80vw;
+}

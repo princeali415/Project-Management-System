@@ -37,8 +37,8 @@ function App() {
           return <Login {...props} setLoggedIn={setLoggedIn} />
         }}/>
         <Route path='/signup' component={SignUp} />
+        {loggedIn ? <NavbarMaterialUI logout={logout}/> : <></>}
         <Switch>
-          {loggedIn ? <NavbarMaterialUI logout={logout}/> : <></>}
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <PrivateRoute path='/team-members' component={TeamMembers} />
           <PrivateRoute path='/tickets' component={Tickets} />

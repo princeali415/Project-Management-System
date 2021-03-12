@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AddIcon from "@material-ui/icons/Add";
-// import EditIcon from "@material-ui/icons/Edit";
+ import EditIcon from "@material-ui/icons/Edit";
 // import DeleteIcon from "@material-ui/icons/Delete";
 // import CheckIcon from "@material-ui/icons/Check";
 // import SearchIcon from "@material-ui/icons/Search";
@@ -27,7 +27,7 @@ export default function TicketTable(props) {
     },[])
 
     let rows = userInfo.problems
-    console.log(rows)
+    //console.log(rows)
 
   return (
     <MaterialTable
@@ -60,7 +60,7 @@ export default function TicketTable(props) {
       title="Tickets"
        icons={{
          Add: props => <AddIcon />,
-    //     Edit: props => <EditIcon />,
+         Edit: props => <EditIcon />,
     //     Delete: props => <DeleteIcon />,
     //     Clear: props => <DeleteIcon />,
     //     Check: props => <CheckIcon />,

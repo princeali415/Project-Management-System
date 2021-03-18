@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddIcon from "@material-ui/icons/Add";
  import EditIcon from "@material-ui/icons/Edit";
-// import DeleteIcon from "@material-ui/icons/Delete";
+ import DeleteIcon from "@material-ui/icons/Delete";
 // import CheckIcon from "@material-ui/icons/Check";
 // import SearchIcon from "@material-ui/icons/Search";
 import { Input } from "@material-ui/core";
@@ -61,7 +61,7 @@ export default function TicketTable(props) {
        icons={{
          Add: props => <AddIcon />,
          Edit: props => <EditIcon />,
-    //     Delete: props => <DeleteIcon />,
+         Delete: props => <DeleteIcon />,
     //     Clear: props => <DeleteIcon />,
     //     Check: props => <CheckIcon />,
     //     Search: props => <SearchIcon />,

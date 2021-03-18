@@ -66,7 +66,7 @@ export default function TicketTable(props) {
     //     Check: props => <CheckIcon />,
     //     Search: props => <SearchIcon />,
        }}
-      editable={{
+      editable={{ // on edit handler needs to go in here, (on row add, on row update)
         onRowAdd: newData =>
           new Promise((resolve, reject) => {
             setTimeout(() => {

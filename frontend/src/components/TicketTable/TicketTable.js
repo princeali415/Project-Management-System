@@ -20,6 +20,7 @@ export default function TicketTable(props) {
         .get("/users/getuserinfo")
         .then(res => {
             setUserInfo(res.data)
+            localStorage.setItem("userinfo", JSON.stringify(res.data))
         })
         .catch(err => {
             console.log(err)

@@ -92,6 +92,8 @@ export default function NavbarMaterialUI(props) {
     setOpen(false);
   };
 
+  const currentUser = JSON.parse(localStorage.getItem("userinfo"))
+
   return (
     <>
       <CssBaseline />
@@ -112,7 +114,7 @@ export default function NavbarMaterialUI(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            8-Up Project Management System
+            Welcome, {currentUser.username}
           </Typography>
         </Toolbar>
       </AppBar>

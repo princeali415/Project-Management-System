@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import AddIcon from "@material-ui/icons/Add";
  import EditIcon from "@material-ui/icons/Edit";
  import DeleteIcon from "@material-ui/icons/Delete";
-// import CheckIcon from "@material-ui/icons/Check";
-// import SearchIcon from "@material-ui/icons/Search";
+ import CheckIcon from "@material-ui/icons/Check";
+ import SearchIcon from "@material-ui/icons/Search";
 import { Input } from "@material-ui/core";
 import MaterialTable from "material-table";
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
+import AddTicketModal from "./AddTicketModal";
 
 
 export default function TicketTable(props) {
@@ -30,7 +31,10 @@ export default function TicketTable(props) {
     let rows = userInfo.problems
     //console.log(rows)
 
+  
+
   return (
+    <>
     <MaterialTable
       style={{ marginTop: 65 }}
       columns={[
@@ -60,36 +64,38 @@ export default function TicketTable(props) {
       data={rows}
       title="Tickets"
        icons={{
-         Add: props => <AddIcon />,
+         //Add: props => <AddIcon />,
          Edit: props => <EditIcon />,
          Delete: props => <DeleteIcon />,
-    //     Clear: props => <DeleteIcon />,
-    //     Check: props => <CheckIcon />,
-    //     Search: props => <SearchIcon />,
+         //Clear: props => <DeleteIcon />,
+         //Check: props => <CheckIcon />,
+         Search: props => <SearchIcon />,
        }}
-      editable={{ // on edit handler needs to go in here, (on row add, on row update)
-        onRowAdd: newData =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              setData([...rows, newData]);
+      // editable={{ // on edit handler needs to go in here, (on row add, on row update)
+      //   onRowAdd: newData =>
+      //     new Promise((resolve, reject) => {
+      //       setTimeout(() => {
+      //         setData([...rows, newData]);
 
-              resolve();
-            }, 1000);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              const dataUpdate = [...rows];
-              const index = oldData.tableData.id;
-              dataUpdate[index] = newData;
-              setData([...dataUpdate]);
+      //         resolve();
+      //       }, 1000);
+      //     }),
+      //   onRowUpdate: (newData, oldData) =>
+      //     new Promise((resolve, reject) => {
+      //       setTimeout(() => {
+      //         const dataUpdate = [...rows];
+      //         const index = oldData.tableData.id;
+      //         dataUpdate[index] = newData;
+      //         setData([...dataUpdate]);
 
-              resolve();
-            }, 1000);
-          }),
+      //         resolve();
+      //       }, 1000);
+      //     }),
         
-      }}
+      // }}
       
     />
+    <AddTicketModal />
+    </>
   );
 };

@@ -114,7 +114,7 @@ export default function NavbarMaterialUI(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Welcome, {currentUser.username}
+            {/* Welcome, {currentUser.username} */}
           </Typography>
         </Toolbar>
       </AppBar>

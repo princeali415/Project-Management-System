@@ -11,8 +11,8 @@ import AddTicketModal from "./AddTicketModal";
 
 
 export default function TicketTable(props) {
-    const [, setData] = useState([])
-  const [userInfo, setUserInfo] = useState([]);
+
+    const [userInfo, setUserInfo] = useState([]);
     // const classes = useStyles();
 
 
@@ -28,7 +28,7 @@ export default function TicketTable(props) {
         })
     },[])
 
-    let rows = userInfo.problems
+    const rows = userInfo.problems
     //console.log(rows)
 
   

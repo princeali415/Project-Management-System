@@ -34,7 +34,7 @@ function ProjectTable(props) {
         style={{ marginTop: 65}}
         columns={columns}
         data={projects}
-        title="Tickets"
+        title="Projects"
         icons={{
             Search: () => <SearchIcon />,
         }}

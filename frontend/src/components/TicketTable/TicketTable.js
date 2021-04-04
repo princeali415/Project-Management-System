@@ -1,101 +1,50 @@
 import React, { useState, useEffect } from "react";
-import AddIcon from "@material-ui/icons/Add";
- import EditIcon from "@material-ui/icons/Edit";
- import DeleteIcon from "@material-ui/icons/Delete";
- import CheckIcon from "@material-ui/icons/Check";
- import SearchIcon from "@material-ui/icons/Search";
-import { Input } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 import MaterialTable from "material-table";
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
-import AddTicketModal from "./AddTicketModal";
-
 
 export default function TicketTable(props) {
-
-    const [userInfo, setUserInfo] = useState([]);
-    // const classes = useStyles();
-
+    const [rows, setRows] = useState([])
+    const [columns, setCoulumnsData] = useState([
+      {
+        title: "Problem Name",
+        field: "problemname",
+      },
+      { 
+          title: "Problem Description", 
+          field: "problemdescription" 
+      },
+      { 
+          title: "Status", 
+          field: "status.status", 
+      },
+      { 
+          title: "Project", 
+          field: "project.projectname", 
+      }
+    ])
 
     useEffect(() => {
         axiosWithAuth()
         .get("/users/getuserinfo")
         .then(res => {
-            setUserInfo(res.data)
+            setRows(res.data.problems)
             localStorage.setItem("userinfo", JSON.stringify(res.data))
         })
         .catch(err => {
             console.log(err)
         })
     },[])
-
-    const rows = userInfo.problems
-    //console.log(rows)
-
   
-
   return (
-    <>
     <MaterialTable
       style={{ marginTop: 65 }}
-      columns={[
-        {
-          title: "Problem Name",
-          field: "problemname",
-          editComponent: editProps => (
-            <Input
-              autoFocus={true}
-              onChange={e => editProps.onChange(e.target.value)}
-            />
-          )
-        },
-        { 
-            title: "Problem Description", 
-            field: "problemdescription" 
-        },
-        { 
-            title: "Status", 
-            field: "status.status", 
-        },
-        { 
-            title: "Project", 
-            field: "project.projectname", 
-        }
-      ]}
+      columns={columns}
       data={rows}
       title="Tickets"
-       icons={{
-         //Add: props => <AddIcon />,
-         Edit: props => <EditIcon />,
-         Delete: props => <DeleteIcon />,
-         //Clear: props => <DeleteIcon />,
-         //Check: props => <CheckIcon />,
-         Search: props => <SearchIcon />,
+      icons={{
+         Search: () => <SearchIcon />,
        }}
-      // editable={{ // on edit handler needs to go in here, (on row add, on row update)
-      //   onRowAdd: newData =>
-      //     new Promise((resolve, reject) => {
-      //       setTimeout(() => {
-      //         setData([...rows, newData]);
-
-      //         resolve();
-      //       }, 1000);
-      //     }),
-      //   onRowUpdate: (newData, oldData) =>
-      //     new Promise((resolve, reject) => {
-      //       setTimeout(() => {
-      //         const dataUpdate = [...rows];
-      //         const index = oldData.tableData.id;
-      //         dataUpdate[index] = newData;
-      //         setData([...dataUpdate]);
-
-      //         resolve();
-      //       }, 1000);
-      //     }),
-        
-      // }}
-      
     />
-    <AddTicketModal />
-    </>
   );
 };

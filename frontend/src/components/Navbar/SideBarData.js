@@ -13,13 +13,13 @@ export const SidebarData = [
         cName: 'nav-text',
         id: 'dashboard-id'
     },
-    {
-        title: 'Team Members',
-        path: '/team-members',
-        icon: <GroupIcon />,
-        cName: 'nav-text',
-        id: 'team-members-id'
-    },
+    // {
+    //     title: 'Team Members',
+    //     path: '/team-members',
+    //     icon: <GroupIcon />,
+    //     cName: 'nav-text',
+    //     id: 'team-members-id'
+    // },
     {
         title: 'Tickets',
         path: '/tickets',

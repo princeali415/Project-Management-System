@@ -105,6 +105,7 @@ export default function Login({setLoggedIn}) {
             .then((res) => {
                 localStorage.setItem('token', res.data.access_token);
                 if(localStorage.getItem('token')){
+                    localStorage.setItem('username', formValues.username)
                     setLoggedIn(true)
                 }
                 history.push("/tickets")

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -82,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
 export default function NavbarMaterialUI(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = useState(false);
+  const [currusername, ] = useState((localStorage.getItem("username")))
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -92,7 +92,6 @@ export default function NavbarMaterialUI(props) {
     setOpen(false);
   };
 
-  const currentUser = JSON.parse(localStorage.getItem("userinfo"))
 
   return (
     <>
@@ -114,7 +113,7 @@ export default function NavbarMaterialUI(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            {/* Welcome, {currentUser.username} */}
+            Welcome, {currusername}
           </Typography>
         </Toolbar>
       </AppBar>

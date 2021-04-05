@@ -1,10 +1,11 @@
 import React from 'react'
+import KanbanBoard from '../components/Kanban/KanbanBoard'
 
 function Dashboard(props) {
-
+ 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <KanbanBoard />
         </div>
     )
 }
